@@ -1,0 +1,75 @@
+/* Establecer la fuente y los márgenes iniciales */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  h1 {
+    font-size: 2rem;
+    color: #333;
+    text-align: center;
+    padding: 2rem 0;
+  }
+
+  form-container {
+    width: 30rem;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  #form-container input {
+    padding: 0.5rem;
+    margin: 1rem 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 1rem;
+  }
+  
+  form-container input:focus {
+    outline: none;
+    box-shadow: 0 0 2px 1px #33b5e5;
+  }
+  
+  .button {
+    padding: 0.5rem 2rem;
+    background-color: #33b5e5;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin: 1rem 0;
+  }
+  
+  .button:hover {
+    background-color: #22a7d5;
+  }
+  
+  .button:focus {
+    box-shadow: 0 0 2px 1px #33b5e5;
+  }
+  
+  a {
+    display: block;
+    text-align: center;
+    margin: 1rem 0;
+    color: #33b5e5;
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  #google-login-btn,
+  #facebook-login-btn {
+    background-color: transparent;
+    color: #333;
+  }
+  
+  #google-login-btn:hover,
+  #facebook-login-btn:hover {
+    background-color: #f5f5f5;
+  }
