@@ -23,14 +23,16 @@ document.addEventListener("DOMContentLoaded", () => {
           let data = e.data();
           userData.innerHTML = 
           `
-            <h3>Cedula:</h3> ${data["cc"]} 
-            <h3>Nombre:</h3> ${data["fullName"]} 
-            <h3>Direccion:</h3> ${data["address"]} 
-            <h3>Telefono:</h3> ${data["phone"]} 
-            <h3>Correo:</h3> ${data["email"]} 
-            <h3>Fecha De Naciemiento:</h3> ${data["bornDate"]} 
+            Cedula: ${data["cc"]} <p>
+            Nombre: ${data["fullName"]}<p> 
+            Direccion: ${data["address"]} <p>
+            Telefono: ${data["phone"]} <p>
+            Correo: ${data["email"]} <p>
+            Fecha De Naciemiento: ${data["bornDate"]} <p>
           `
-      });
+      }).catch((e)=> {
+        window.location.href = "./reg.html";
+      });;
     }
   });
 
