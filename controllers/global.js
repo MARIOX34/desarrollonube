@@ -12,6 +12,15 @@ import {
   createUserWithEmailAndPassword,
 } from "https://www.gstatic.com/firebasejs/10.11.0/firebase-auth.js";
 
+import {
+  getFirestore,
+  collection,
+  doc,
+  addDoc,
+  setDoc,
+  getDoc,
+} from "https://www.gstatic.com/firebasejs/10.11.0/firebase-firestore.js";
+
 const firebaseConfig = {
   apiKey: "AIzaSyB116YhHv2bZNFklREWQp3bGkHIcGv4rfk",
   authDomain: "apiweb19.firebaseapp.com",
@@ -46,3 +55,17 @@ export const loginWithFacebook = async (email, password) =>createUserWithEmailAn
 export const onAuthChanged = (user) => onAuthStateChanged(auth, user);
 
 export const deleteCurrentUser = async () => auth.currentUser.delete();
+
+const db = getFirestore(app);
+export const addData = async (id, cc, fullName, address, phone, email, bornDate) =>
+  await setDoc(doc(collection(db, "users"), id), {
+    id: id,
+    cc: cc,
+    fullName: fullName, 
+    address: address, 
+    phone: phone, 
+    email: email,
+    bornDate: bornDate
+  });
+
+export const getData = async (id) => await getDoc(doc(db, "users", id));
