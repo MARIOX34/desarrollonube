@@ -16,7 +16,7 @@ async function loginWithInputs() {
   signinEmailPassword(email, password)
     .then((userCredential) => {
       if (userCredential.user.emailVerified) {
-        window.location.href = "../templates/home.html";
+        window.location.href = "./templates/home.html";
       } else {
         alert("Para iniciar sesion debes de verificar el correo");
       }
@@ -31,12 +31,12 @@ document.addEventListener("DOMContentLoaded", () => {
   loginBtn.addEventListener("click", loginWithInputs);
   loginGoogleBtn.addEventListener("click", () => {
     signInPopup(googleProvider).then(() => {
-      window.location.href = "../templates/home.html";
+      window.location.href = "./templates/home.html";
     }); 
   });
   loginFacebookBtn.addEventListener("click", () =>
     signInPopup(facebookProvider).then(() => {
-      window.location.href = "../templates/home.html";
+      window.location.href = "./templates/home.html";
     }) 
   );
 });
