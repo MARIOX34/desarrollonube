@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", () => {
             Fecha De Naciemiento: ${data["bornDate"]} <p>
           `;
           if (rol === "admin") {
+            userData.innerHTML += `<button type="button" id="create-account-btn">Crear Usuario</button>`;
             getDataAsAdmin().then((userData) => {
               let tableHTML = `
               <table>
