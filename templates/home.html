@@ -1,16 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inicio</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+    </style>
 </head>
+
 <body>
     <h1>Home</h1>
     <button type="button" id="reset-password-btn">Resetear Contraseña</button>
     <button type="button" id="logout-btn">Cerrar Sesion</button>
     <button type="button" id="delete-account-btn">Eliminar Usuario</button>
+    <button type="button" id="create-account-btn">Crear Usuario</button>
     <div id="user-data"></div>
+    <div id="content"></div>
     <script type="module" src="../controllers/home.js"></script>
 </body>
+
 </html>
