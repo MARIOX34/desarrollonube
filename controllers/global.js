@@ -19,6 +19,7 @@ import {
   addDoc,
   query,
   setDoc,
+  updateDoc,
   deleteDoc,
   getDocs,
   getDoc,
@@ -31,7 +32,7 @@ const firebaseConfig = {
   storageBucket: "apiweb19.appspot.com",
   messagingSenderId: "806299186428",
   appId: "1:806299186428:web:3b6b9b6098234af8885379",
-  measurementId: "G-3QLESPWPDV"
+  measurementId: "G-3QLESPWPDV",
 };
 
 const app = initializeApp(firebaseConfig);
@@ -42,37 +43,70 @@ export const facebookProvider = new FacebookAuthProvider();
 
 export const signInPopup = (provider) => signInWithPopup(auth, provider);
 
-export const sendEmailToResetPassword = (email) => sendPasswordResetEmail(auth, email)
+export const sendEmailToResetPassword = (email) =>
+  sendPasswordResetEmail(auth, email);
 export const sendEmail = (user) => sendEmailVerification(user);
 export const logOut = async () => signOut(auth);
 
-export const signinEmailPassword = async (email, password) => signInWithEmailAndPassword(auth, email, password);
+export const signinEmailPassword = async (email, password) =>
+  signInWithEmailAndPassword(auth, email, password);
 
+export const createUserEmailPassword = async (email, password) =>
+  createUserWithEmailAndPassword(auth, email, password);
 
-export const createUserEmailPassword = async (email, password) => createUserWithEmailAndPassword(auth, email, password);
+export const loginWithGoogle = async (email, password) =>
+  createUserWithEmailAndPassword(auth, email, password);
 
-export const loginWithGoogle = async (email, password) => createUserWithEmailAndPassword(auth, email, password);
-
-export const loginWithFacebook = async (email, password) =>createUserWithEmailAndPassword(auth, email, password);
+export const loginWithFacebook = async (email, password) =>
+  createUserWithEmailAndPassword(auth, email, password);
 
 export const onAuthChanged = (user) => onAuthStateChanged(auth, user);
 
 export const deleteCurrentUser = async () => auth.currentUser.delete();
 
 const db = getFirestore(app);
-export const addData = async (id, cc, fullName, address, phone, email, bornDate) =>
+export const addData = async (
+  id,
+  cc,
+  fullName,
+  address,
+  phone,
+  email,
+  bornDate
+) =>
   await setDoc(doc(collection(db, "users"), id), {
     id: id,
     rol: "user",
     cc: cc,
-    fullName: fullName, 
-    address: address, 
-    phone: phone, 
+    fullName: fullName,
+    address: address,
+    phone: phone,
     email: email,
-    bornDate: bornDate
+    bornDate: bornDate,
   });
 
 export const getData = async (id) => await getDoc(doc(db, "users", id));
 const q = query(collection(db, "users"));
-export const getDataAsAdmin = async () => await getDocs(q);  
-export const deleteDocument = async (id) => await deleteDoc(doc(db, "users", id));
+export const getDataAsAdmin = async () => await getDocs(q);
+export const deleteDocument = async (id) =>
+  await deleteDoc(doc(db, "users", id));
+export const updateData = async (
+  id,
+  rol,
+  cc,
+  fullName,
+  address,
+  phone,
+  email,
+  bornDate
+) =>
+  updateDoc(doc(db, "users", id), {
+    id: id,
+    rol: rol,
+    cc: cc,
+    fullName: fullName,
+    address: address,
+    phone: phone,
+    email: email,
+    bornDate: bornDate,
+  });
